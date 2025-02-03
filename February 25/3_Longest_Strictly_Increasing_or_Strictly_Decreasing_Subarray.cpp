@@ -4,29 +4,19 @@ https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing
 */
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int longestMonotonicSubarray(vector<int>& nums) {
-        int inc = 0, dec = 0;
-        for(int i = 0;i<nums.size();i++){
-            int ci = 0;
-            for(int j = i;j < nums.size();j++){
-                if(j == nums.size()-1){ci++;break;}
-                if(nums[j]<nums[j+1])ci++;
-                else {ci++; break;}
-            }
-            inc = max(inc, ci);
+    int longestMonotonicSubarray(vector<int> &nums)
+    {
+        int inc = 1, dec = 1, ans = 1;
+        for (int i = 1; i < nums.size(); i++)
+        {
+            (nums[i] > nums[i - 1]) ? inc++ : inc = 1;
+            (nums[nums.size() - i] < nums[nums.size() - i - 1]) ? dec++ : dec = 1;
+            ans = max({ans, dec, inc});
         }
-        for(int i = 0;i<nums.size();i++){
-            int cd = 0;
-            for(int j = i;j < nums.size();j++){
-                if(j == nums.size()-1){cd++;break;}
-                if(nums[j]>nums[j+1])cd++;
-                else {cd++; break;}
-            }
-            dec = max(dec, cd);
-        }
-        return max(inc, dec);
+        return ans;
     }
 };
 int main()
