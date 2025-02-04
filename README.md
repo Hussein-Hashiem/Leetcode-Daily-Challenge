@@ -1,1 +1,2 @@
-Solving the daily challenge from LeetCode.
+# Leetcode-solution
+## My solutions in leetcode daily problems 
