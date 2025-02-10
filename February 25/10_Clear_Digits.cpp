@@ -20,7 +20,7 @@ public:
         return ans;
     }
 };
-int main()
+int main ()
 {
     return 0;
 }
